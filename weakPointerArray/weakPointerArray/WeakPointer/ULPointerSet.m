@@ -56,10 +56,15 @@
     NSArray *allObjects = [self.weakPointerSet allObjects];
     dispatch_semaphore_signal(self.semaphore);
     return allObjects;
-
-
 }
 
+
+- (NSUInteger)count{
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    NSUInteger count = self.weakPointerSet.count;
+    dispatch_semaphore_signal(self.semaphore);
+    return count;
+}
 
 
 @end

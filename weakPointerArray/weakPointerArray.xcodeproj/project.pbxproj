@@ -18,6 +18,7 @@
 		507C9B3427269E8C000DD22A /* weakPointerArrayUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C9B3327269E8C000DD22A /* weakPointerArrayUITests.m */; };
 		507C9B4527269EA6000DD22A /* ULPointerArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C9B4227269EA6000DD22A /* ULPointerArray.m */; };
 		507C9B4627269EA6000DD22A /* ULPointerSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C9B4427269EA6000DD22A /* ULPointerSet.m */; };
+		507C9B4A2726B07C000DD22A /* ULPointerDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C9B492726B07C000DD22A /* ULPointerDictionary.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		507C9B4227269EA6000DD22A /* ULPointerArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ULPointerArray.m; sourceTree = "<group>"; };
 		507C9B4327269EA6000DD22A /* ULPointerArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULPointerArray.h; sourceTree = "<group>"; };
 		507C9B4427269EA6000DD22A /* ULPointerSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ULPointerSet.m; sourceTree = "<group>"; };
+		507C9B482726B07C000DD22A /* ULPointerDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ULPointerDictionary.h; sourceTree = "<group>"; };
+		507C9B492726B07C000DD22A /* ULPointerDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ULPointerDictionary.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +154,8 @@
 				507C9B4227269EA6000DD22A /* ULPointerArray.m */,
 				507C9B4127269EA6000DD22A /* ULPointerSet.h */,
 				507C9B4427269EA6000DD22A /* ULPointerSet.m */,
+				507C9B482726B07C000DD22A /* ULPointerDictionary.h */,
+				507C9B492726B07C000DD22A /* ULPointerDictionary.m */,
 			);
 			path = WeakPointer;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				507C9B0E27269E8A000DD22A /* AppDelegate.m in Sources */,
 				507C9B1F27269E8B000DD22A /* main.m in Sources */,
 				507C9B4627269EA6000DD22A /* ULPointerSet.m in Sources */,
+				507C9B4A2726B07C000DD22A /* ULPointerDictionary.m in Sources */,
 				507C9B1127269E8A000DD22A /* SceneDelegate.m in Sources */,
 				507C9B4527269EA6000DD22A /* ULPointerArray.m in Sources */,
 			);
@@ -463,10 +469,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X9Y433KPH7;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = weakPointerArray/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_CFLAGS = (
+					"-Werror=incomplete-implementation",
+					"-Werror=undeclared-selector",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.uxin.weakPointerArray;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -481,10 +494,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X9Y433KPH7;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = weakPointerArray/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_CFLAGS = (
+					"-Werror=incomplete-implementation",
+					"-Werror=undeclared-selector",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.uxin.weakPointerArray;
 				PRODUCT_NAME = "$(TARGET_NAME)";

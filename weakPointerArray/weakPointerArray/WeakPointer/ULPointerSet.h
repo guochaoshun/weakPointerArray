@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)weakPointerSet;
 
+@property (readonly) NSUInteger count;
+
 @property (nonatomic, strong, readonly) NSHashTable *weakPointerSet;
 
 - (BOOL)containsObject:(NSObject *)anObject;

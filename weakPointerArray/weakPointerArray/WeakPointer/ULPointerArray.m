@@ -54,7 +54,7 @@
 
 - (void)removeObject:(NSObject *)anObject {
     dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
-    [self removeAction:anObject];
+    [self p_removeAction:anObject];
     dispatch_semaphore_signal(self.semaphore);
 }
 
@@ -70,8 +70,17 @@
     [self.weakPointerArray compact];
 }
 
+
+- (NSUInteger)count{
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    [self removeNilPointerIfNeed];
+    NSUInteger count = self.weakPointerArray.count;
+    dispatch_semaphore_signal(self.semaphore);
+    return count;
+}
+
 /// 倒序删除
-- (void)removeAction:(NSObject *)anObject {
+- (void)p_removeAction:(NSObject *)anObject {
     [self removeNilPointerIfNeed];
     for (NSInteger i = self.weakPointerArray.count-1; i>=0; i--) {
         NSObject *obj = [self.weakPointerArray pointerAtIndex:i];
@@ -81,8 +90,8 @@
     }
 }
 
-// 通过数组删除, 只能删除一个,想要删除多个的话,会出现下表不匹配的问题
-- (void)removeAction2:(NSObject *)anObject {
+// 备选删除方案:通过数组删除, 只能删除一个,想要删除多个的话,会出现下标不匹配的问题
+- (void)p_removeAction2:(NSObject *)anObject {
     [self removeNilPointerIfNeed];
     NSUInteger index = [self.weakPointerArray.allObjects indexOfObject:anObject];
     if (index != NSNotFound) {
@@ -90,6 +99,5 @@
     }
 
 }
-
 
 @end

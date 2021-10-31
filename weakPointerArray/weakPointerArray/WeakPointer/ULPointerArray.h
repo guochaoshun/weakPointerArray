@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)weakPointerArray;
 
+@property (readonly) NSUInteger count;
+
 - (BOOL)containsObject:(NSObject *)anObject;
 
 - (void)addObject:(NSObject *)anObject;
