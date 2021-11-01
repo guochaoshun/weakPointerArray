@@ -19,32 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self lockArrayTest];
-
 }
 
 #pragma mark NSMapTable测试用例
-- (void)lockDictionaryTest {
-
-    ULPointerDictionary *pointerDic = [ULPointerDictionary strongToWeakObjectsDictionary];
-
-    // 加锁有必要的,NSMapTable不是线程安全的
-    // 100000 信号量为1 需要13s
-    // 100000 并发量改为10, crash
-    NSLog(@"开始");
-    for (NSInteger i = 0; i<100000; i++) {
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            NSObject *obj = [NSObject new];
-            [pointerDic setObject:obj forKey:@"1"];
-            dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                [pointerDic removeObjectForKey:@"1"];
-            });
-        });
-    }
-    NSLog(@"结束");
-
-}
-
 - (void)pointerDicTest {
     ULPointerDictionary *pointerDic = [ULPointerDictionary strongToWeakObjectsDictionary];
 
@@ -66,6 +43,27 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSLog(@"44 - %@",[pointerDic toDictionary]);
     });
+
+}
+
+- (void)lockDictionaryTest {
+
+    ULPointerDictionary *pointerDic = [ULPointerDictionary strongToWeakObjectsDictionary];
+
+    // 加锁有必要的,NSMapTable不是线程安全的
+    // 100000 信号量为1 需要13s
+    // 100000 并发量改为10, crash
+    NSLog(@"开始");
+    for (NSInteger i = 0; i<100000; i++) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            NSObject *obj = [NSObject new];
+            [pointerDic setObject:obj forKey:@"1"];
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                [pointerDic removeObjectForKey:@"1"];
+            });
+        });
+    }
+    NSLog(@"结束");
 
 }
 
