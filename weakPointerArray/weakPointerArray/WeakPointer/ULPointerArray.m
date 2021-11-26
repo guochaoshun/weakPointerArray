@@ -77,7 +77,7 @@
     // 方案1: 直接移除,O(n)复杂度
     [self.weakPointerArray addPointer:nil];
     [self.weakPointerArray compact];
-    // 方案2: 比较导出数据的count和自身的count,不一致在做移除,
+    // 方案2: 比较导出allObjects的count和自身的count,不一致在做移除,
     // 导出这个数组需要O(n),移除操作需要O(n),总体是O(2*n)复杂度,还不如方案1的做法,不推荐
 //    NSArray *result = self.weakPointerArray.allObjects;
 //    if (self.count != result.count) {
